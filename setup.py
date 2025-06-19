@@ -25,14 +25,30 @@ setup(
     url='https://github.com/ascet-dev/adc-webkit',
     python_requires='>=3.8',
     install_requires=[
-        'aiohttp>=3.8.0',
+        'jose>=3.3.0',
         'pydantic>=2.0.0',
+        'starlette>=0.27.0',
+        'ujson>=5.8.0',
     ],
+    extras_require={
+        'dev': [
+            'pytest>=7.0.0',
+            'pytest-asyncio>=0.21.0',
+            'black>=23.0.0',
+            'isort>=5.12.0',
+            'flake8>=6.0.0',
+            'mypy>=1.0.0',
+        ],
+        'docs': [
+            'mkdocs>=1.4.0',
+            'mkdocs-material>=9.0.0',
+        ],
+    },
     license='MIT',
     description='Toolkit for building web applications',
     long_description=get_long_description(),
     long_description_content_type='text/markdown',
-    packages=get_packages('http_ext'),
+    packages=get_packages('adc_webkit'),
     include_package_data=True,
     data_files=[('', [])],
     classifiers=[

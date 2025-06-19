@@ -4,7 +4,7 @@ from typing import TypeVar, Generic, Literal, Mapping, Any, Type
 from pydantic import BaseModel
 from starlette.requests import Request
 
-from http_ext.errors import Unauthorized
+from adc_webkit.errors import Unauthorized
 
 T = TypeVar('T', bound=Type[BaseModel])
 SCHEME = Literal['bearer', 'basic']

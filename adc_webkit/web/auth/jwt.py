@@ -6,7 +6,7 @@ from pydantic import BaseModel
 from starlette.requests import Request
 
 from .base import HTTPAuth
-from http_ext.errors import Unauthorized
+from adc_webkit.errors import Unauthorized
 
 
 class DecodeParams(BaseModel):

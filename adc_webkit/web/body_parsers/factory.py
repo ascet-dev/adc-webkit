@@ -1,6 +1,6 @@
 from typing import Type
 
-from http_ext.types import Base
+from adc_webkit.types import Base
 from .base import Parser
 
 

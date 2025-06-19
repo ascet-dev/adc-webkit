@@ -30,9 +30,9 @@ pip install -e .
 ## Quick Start
 
 ```python
-from http_ext.web import WebApplication
-from http_ext.web.endpoints import JSONEndpoint
-from http_ext.web.auth import JWTAuth
+from adc_webkit.web import WebApplication
+from adc_webkit.web.endpoints import JSONEndpoint
+from adc_webkit.web.auth import JWTAuth
 
 # Create application
 app = WebApplication()
@@ -53,7 +53,7 @@ if __name__ == "__main__":
 ## Project Structure
 
 ```
-http_ext/
+adc_webkit/
 ├── __init__.py
 ├── errors.py              # Custom HTTP error handling
 ├── types/                 # Type definitions and models
@@ -95,7 +95,7 @@ http_ext/
 
 ## Core Components
 
-### HTTP Extensions (`http_ext`)
+### HTTP Extensions (`adc_webkit`)
 
 The main package providing enhanced HTTP functionality:
 
@@ -104,7 +104,7 @@ The main package providing enhanced HTTP functionality:
 - Pagination support
 - File upload/download handling
 
-### Web Framework (`http_ext.web`)
+### Web Framework (`adc_webkit.web`)
 
 A complete web application framework built on top of aiohttp:
 
@@ -114,7 +114,7 @@ A complete web application framework built on top of aiohttp:
 - **Body Parsers**: Flexible request body parsing
 - **OpenAPI**: Automatic API documentation generation
 
-### Type System (`http_ext.types`)
+### Type System (`adc_webkit.types`)
 
 Comprehensive type definitions using Pydantic:
 
@@ -125,11 +125,10 @@ Comprehensive type definitions using Pydantic:
 
 ## Usage Examples
 
-
 ### CRUD Operations
 
 ```python
-from http_ext.web.endpoints import CRUDEndpoint
+from adc_webkit.web.endpoints import CRUDEndpoint
 
 class ProductEndpoint(CRUDEndpoint):
     async def list(self):
@@ -155,7 +154,7 @@ app.add_endpoint("/products", ProductEndpoint)
 ### Authentication
 
 ```python
-from http_ext.web.auth import JWTAuth
+from adc_webkit.web.auth import JWTAuth
 
 class ProtectedEndpoint(JSONEndpoint):
     auth_class = JWTAuth
@@ -168,7 +167,7 @@ class ProtectedEndpoint(JSONEndpoint):
 ### Custom Body Parser
 
 ```python
-from http_ext.web.body_parsers import BaseBodyParser
+from adc_webkit.web.body_parsers import BaseBodyParser
 
 class CustomParser(BaseBodyParser):
     async def parse(self, request):
@@ -204,7 +203,6 @@ pip install -e ".[dev]"
 pytest
 ```
 
-
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
@@ -217,5 +215,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## Requirements
 
 - Python 3.8+
-- aiohttp >= 3.8.0
-- pydantic >= 2.0.0 
+- jose >= 3.3.0
+- pydantic >= 2.0.0
+- starlette >= 0.27.0
+- ujson >= 5.8.0 

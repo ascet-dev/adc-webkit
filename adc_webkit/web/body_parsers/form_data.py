@@ -4,7 +4,7 @@ from pydantic import BaseModel, ValidationError
 from starlette.datastructures import FormData
 from starlette.requests import Request
 
-from http_ext.errors import UnprocessableEntity
+from adc_webkit.errors import UnprocessableEntity
 from . import Parser
 
 

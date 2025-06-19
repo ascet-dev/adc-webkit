@@ -11,7 +11,7 @@ from starlette.middleware.cors import CORSMiddleware
 from starlette.responses import JSONResponse
 from swagger_ui import api_doc
 
-from http_ext.types import METHOD
+from adc_webkit.types import METHOD
 from . import Endpoint
 from .openapi.schema import build_openapi_doc
 

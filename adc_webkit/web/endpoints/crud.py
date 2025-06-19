@@ -2,11 +2,11 @@ from abc import ABC
 from functools import cached_property
 from typing import Mapping, Type
 
-from http_ext.errors import NotFound
-from http_ext.types import Base, Paginated, Count, BaseSearch
-from http_ext.web.auth import HTTPAuth
-from http_ext.web.openapi import Doc
-from pg_utils import RowNotFoundError, PGDataAccessObject
+from adc_webkit.errors import NotFound
+from adc_webkit.types import Base, Paginated, Count, BaseSearch
+from adc_webkit.web.auth import HTTPAuth
+from adc_webkit.web.openapi import Doc
+from adc_aiopg import RowNotFoundError, PGDataAccessObject #todo: refactor adc-aiopg using
 from .json import JsonEndpoint
 from .request_context import Ctx
 from .response import Response

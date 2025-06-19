@@ -3,7 +3,7 @@ from typing import TYPE_CHECKING
 from pydantic import BaseModel
 
 if TYPE_CHECKING:
-    from http_ext.web import Endpoint
+    from adc_webkit.web import Endpoint
 
 
 class Doc(BaseModel):

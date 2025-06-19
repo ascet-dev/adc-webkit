@@ -2,7 +2,7 @@ from typing import Type, Optional, Iterable, Any
 
 from pydantic import BaseModel
 
-from http_ext.errors import AppError, ErrorModel, ConflictError
+from adc_webkit.errors import AppError, ErrorModel, ConflictError
 
 
 class SResponse(BaseModel):

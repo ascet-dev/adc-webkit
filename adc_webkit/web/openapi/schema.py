@@ -6,7 +6,7 @@ from pydantic import BaseModel, TypeAdapter
 from .auth import build_security_definition
 
 if TYPE_CHECKING:
-    from http_ext.web import Endpoint
+    from adc_webkit.web import Endpoint
 
 
 def get_schema_name(sc):  # todo: move it to usage

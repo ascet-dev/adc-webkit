@@ -4,10 +4,10 @@ from typing import Type, Optional
 from pydantic import BaseModel
 from starlette.responses import StreamingResponse
 
-from http_ext.types import DownloadFile
+from adc_webkit.types import DownloadFile
 from .base import Endpoint
 from .request_context import Ctx
-from http_ext.web.body_parsers import ParserFactory, StreamParser
+from adc_webkit.web.body_parsers import ParserFactory, StreamParser
 
 
 class StreamEndpoint(Endpoint, ABC):

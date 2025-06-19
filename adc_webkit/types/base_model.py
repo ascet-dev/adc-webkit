@@ -1,7 +1,7 @@
 import typing as t
 
 from pydantic import create_model
-from sqlmodel import SQLModel
+from sqlmodel import SQLModel #todo: refactor sqlmodel using
 
 T = t.TypeVar('T', bound='Base')
 
@@ -26,11 +26,6 @@ class Base(SQLModel, t.Generic[T]):
         name = f'{cls.__name__}Exclude_' + '_'.join(excluded)
         return create_model(name, __base__=Base, **fields)
 
-    @classmethod
-    def tst(cls: t.Type[T]) -> t.Type[T]:
-        fields = {k: (v.annotation, v) for k, v in cls.model_fields.items()}
-        name = f'{cls.__name__}TST_' + '_'
-        return create_model(name, __base__=Base, **fields)
 
     class Config:
         use_enum_values = True

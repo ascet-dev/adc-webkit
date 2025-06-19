@@ -10,11 +10,11 @@ from starlette.datastructures import Headers
 from starlette.requests import Request
 from starlette.responses import JSONResponse
 
-from http_ext.errors import BadRequest
-from http_ext.types import METHOD
-from http_ext.web import JsonParser, ParserFactory
-from http_ext.web.auth import HTTPAuth
-from http_ext.web.openapi import Doc
+from adc_webkit.errors import BadRequest
+from adc_webkit.types import METHOD
+from adc_webkit.web import JsonParser, ParserFactory
+from adc_webkit.web.auth import HTTPAuth
+from adc_webkit.web.openapi import Doc
 from .request_context import Ctx
 from .response import Response
 
