@@ -215,7 +215,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## Requirements
 
 - Python 3.8+
-- jose >= 3.3.0
-- pydantic >= 2.0.0
-- starlette >= 0.27.0
-- ujson >= 5.8.0 
+- python-jose[cryptography]>=3.5.0
+- pydantic>=2.11.7
+- starlette>=0.47.0
+- ujson>=5.10.0 
