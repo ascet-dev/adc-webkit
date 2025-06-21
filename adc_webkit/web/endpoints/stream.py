@@ -7,7 +7,6 @@ from starlette.responses import StreamingResponse
 from adc_webkit.types import DownloadFile
 from .base import Endpoint
 from .request_context import Ctx
-from adc_webkit.web.body_parsers import ParserFactory, StreamParser
 
 
 class StreamEndpoint(Endpoint, ABC):

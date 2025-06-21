@@ -3,8 +3,7 @@ from logging import getLogger
 from typing import Type, Mapping, Optional
 
 import ujson
-from pydantic import BaseModel, TypeAdapter, parse_obj_as
-from pydantic.deprecated.json import pydantic_encoder
+from pydantic import BaseModel, TypeAdapter
 from pydantic_core import to_jsonable_python
 from starlette.responses import JSONResponse
 

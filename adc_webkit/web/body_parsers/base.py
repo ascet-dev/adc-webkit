@@ -11,5 +11,5 @@ class Parser(ABC):
     async def load(self, request: Request):
         pass
 
-    def __init__(self, schema: BaseModel, **kwargs):
+    def __init__(self, schema: type[BaseModel], **kwargs):
         self.schema = schema
