@@ -1,6 +1,6 @@
 from typing import Type
 
-from adc_webkit.types import Base
+from pydantic import BaseModel
 from .base import Parser
 
 
@@ -9,7 +9,7 @@ class ParserFactory:
         self.parser_cls = parser_cls
         self.options = kwargs
 
-    def create_parser(self, schema: Base | None = None, ) -> Parser:
+    def create_parser(self, schema: type[BaseModel] | None = None, ) -> Parser:
         return self.parser_cls(schema, **self.options)
 
     def __get__(self, instance, owner):
