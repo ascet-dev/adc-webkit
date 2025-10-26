@@ -36,7 +36,7 @@ class Endpoint(ABC):
         self.path = path
         self.web = web
         self.method = method
-        self.declared_path_params = set(re.findall(r'{(.*?)}', path))
+        self.declared_path_params = set(re.findall(r"{(.*?)}", path))
 
     async def _process_request(self, request: Request):
         try:
@@ -52,7 +52,7 @@ class Endpoint(ABC):
             return await self._process_request(request)
         except Exception as e:
             logger.exception(e)
-            return JSONResponse({'message': 'Unknown Server Error'}, status_code=500)
+            return JSONResponse({"message": "Unknown Server Error"}, status_code=500)
 
     async def build_request_ctx(self, request, auth_payload) -> Ctx:
         try:
@@ -62,43 +62,56 @@ class Endpoint(ABC):
         except PydanticValidationError as e:
             logger.debug(e)
             raise BadRequest(message=str(e))
-        return Ctx(query=params, headers=headers, body=body, request=request, auth_payload=auth_payload)
+        return Ctx(
+            query=params,
+            headers=headers,
+            body=body,
+            request=request,
+            auth_payload=auth_payload,
+        )
 
-    def get_headers(self, headers: Dict[str, Any] | Headers) -> 'headers':
+    def get_headers(self, headers: Dict[str, Any] | Headers) -> "headers":
         if self.headers:
             return self.headers.model_validate(headers)
 
-    async def get_body_params(self, request: Request) -> 'body':
+    async def get_body_params(self, request: Request) -> "body":
         return await self.body_parser.load(request)
 
-    def get_request_params(self, request: Request) -> 'query':
+    def get_request_params(self, request: Request) -> "query":
         if self.query:
             self.schema_path.model_validate(request.path_params)
             self.schema_query.model_validate(request.query_params)
-            return self.query.model_validate({**request.path_params, **request.query_params})
+            return self.query.model_validate(
+                {**request.path_params, **request.query_params}
+            )
 
     @cached_property
     def schema_path(self):
         if self.query:
             return create_model(
-                f'{self.__class__.__name__}PathParams',
+                f"{self.__class__.__name__}PathParams",
                 **{
                     name: (self.query.model_fields[name].annotation, ...)
                     for name in self.declared_path_params
-                }
+                },
             )
 
     @cached_property
     def schema_query(self):
         if self.query:
-            query_param_names = set(self.query.model_fields.keys()) - self.declared_path_params
+            query_param_names = (
+                set(self.query.model_fields.keys()) - self.declared_path_params
+            )
 
             return create_model(
-                f'{self.__class__.__name__}QueryParams',
+                f"{self.__class__.__name__}QueryParams",
                 **{
-                    name: (self.query.model_fields[name].annotation, self.query.model_fields[name].default)
+                    name: (
+                        self.query.model_fields[name].annotation,
+                        self.query.model_fields[name].default,
+                    )
                     for name in query_param_names
-                }
+                },
             )
 
     @abstractmethod
