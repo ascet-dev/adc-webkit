@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "adc-webkit"
-version = "0.1.0"
+version = "0.2.0"
 description = "Async web framework toolkit based on Starlette"
 readme = "README.md"
 requires-python = ">=3.11"
@@ -30,7 +30,7 @@ dependencies = [
     "pydantic>=2.11.7",
     "python-jose[cryptography]>=3.5.0",
     "ujson>=5.10.0",
-    "swagger-ui-py",
+    "swagger-ui-py==25.7.1",
 ]
 
 [project.optional-dependencies]

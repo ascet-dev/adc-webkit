@@ -8,12 +8,10 @@ from pydantic import BaseModel
 from starlette.applications import Starlette
 from starlette.middleware import Middleware
 from starlette.middleware.cors import CORSMiddleware
-from starlette.responses import JSONResponse
-from swagger_ui import api_doc
 
 from adc_webkit.types import METHOD
 from . import Endpoint
-from .openapi.schema import build_openapi_doc
+from .openapi import build_openapi_doc, add_apidoc_routes
 
 
 @dataclasses.dataclass
@@ -47,8 +45,7 @@ class Web:
             description=self.doc.description,
             endpoints=self.views,
         )
-        web.add_route(self.doc.url + '/swagger.json', route=lambda r: JSONResponse(self.apispec), methods=["GET"])
-        api_doc(web, config_url='/swagger.json', url_prefix=self.doc.url, title=self.doc.title, editor=True)
+        add_apidoc_routes(web, self.doc, self.apispec)
 
     @classmethod
     def create(cls, bindings: Dict[str, Any] = None) -> Self:
